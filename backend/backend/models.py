@@ -18,7 +18,7 @@ class Publication(models.Model):
         return str(self.title)
 
     class Meta:
-        ordering = ('name',)
+        ordering = ('title',)
 
 class Category(models.Model):
     """ Describes categories"""
