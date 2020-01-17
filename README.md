@@ -38,9 +38,19 @@ source venv/bin/activate
 cd RESTFul_service
 pip install --upgrade pip
 pip install -r requirements.txt
+
+python manage.py makemigrations
+python manage.py migrate
+python manage.py createsuperuser --username admin
+
 python manage.py runserver 0.0.0.0:8000
 ```
 
-## Django admin panel data
-login: admin
-password: 1111
+### Fill the database with fake data
+``` sh
+python manage.py fill_db 10
+```
+
+### Django admin panel data
+superuser: admin
+password for all generated users: 1111
