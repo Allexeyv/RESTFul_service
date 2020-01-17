@@ -29,5 +29,5 @@ router.register(r'category', views.CategoryViewSet)
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^', include(router.urls)),
-    url(r'^api-auth/', obtain_jwt_token)
+    url(r'^api-token-auth/', obtain_jwt_token)
 ]
