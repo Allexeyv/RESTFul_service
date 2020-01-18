@@ -1,6 +1,6 @@
-from .models import Publication, Category
+from backend.backend.models import Publication, Category
 from rest_framework import viewsets
-from .serializers import PublicationSerializer, CategorySerializer
+from backend.backend.serializers import PublicationSerializer, CategorySerializer
 
 
 class PublicationViewSet(viewsets.ModelViewSet):

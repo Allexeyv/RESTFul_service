@@ -5,10 +5,10 @@ from rest_framework import serializers
 class PublicationSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Publication
-        fields = ('title', 'text', 'created_at', 'tags')
+        fields = ('id', 'title', 'text', 'created_at', 'tags')
 
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        fields = ('name', 'created_at')
+        fields = ('id', 'name', 'created_at')

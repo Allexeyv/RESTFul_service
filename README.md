@@ -4,29 +4,29 @@
 1. RESTFul сервис на базе django (sqlite база пользователей)
 - JWT авторизация (через jwt token, сроком на сутки, если данные не верны или истек токен - 401 Unauthorized) (добавить пару аккаунтов)
 - resources (с проверкой авторизации)
-- publications (публикации, генерятся через faker: title, text, created_at, tags)
-- categories (категории, генерятся через faker: name, created_at)
+    - publications (публикации, генерятся через faker: title, text, created_at, tags)
+    - categories (категории, генерятся через faker: name, created_at)
 
 2. api client библиотека
 - принцип работы:
 ``` sh
-    from api_lib import ApiClient
-    base_url = http://api_address/
-    client = ApiClient(base_url=base_url)
-    login_result = client.login(ligin, pass)
-    # сохраняется атрибут token, доступный затем как client.token
+from api_lib import ApiClient
+base_url = http://api_address/
+client = ApiClient(base_url=base_url)
+login_result = client.login(ligin, pass)
+# сохраняется атрибут token, доступный затем как client.token
 
-    publications = client.get_publications()
-    categories = client.get_categories()
+publications = client.get_publications()
+categories = client.get_categories()
 
-    publication = client.get_publication(id=1)
-    category = client.get_category(id=1)
+publication = client.get_publication(id=1)
+category = client.get_category(id=1)
 
-    client.update_category(data=category)
-    client.update_publication(data=publication)
+client.update_category(data=category)
+client.update_publication(data=publication)
 
-    client.create_category(data=category)
-    client.create_publication(data=publication)
+client.create_category(data=category)
+client.create_publication(data=publication)
 ```
 
 ## How to start

@@ -12,5 +12,8 @@ def post(url, headers, body):
 def get(url, headers):
     r = requests.get(url, headers=headers)
     status_code = r.status_code
-    r = r.json()
+    try:
+        r = r.json()
+    except:
+        pass
     return r, status_code
