@@ -1,14 +1,14 @@
-from .models import Publication, Category
-from rest_framework import serializers
+from backend.backend.models import Publication, Category
+from rest_framework.serializers import ModelSerializer
 
 
-class PublicationSerializer(serializers.HyperlinkedModelSerializer):
+class PublicationSerializer(ModelSerializer):
     class Meta:
         model = Publication
-        fields = ('id', 'title', 'text', 'created_at', 'tags')
+        fields = '__all__'
 
 
-class CategorySerializer(serializers.HyperlinkedModelSerializer):
+class CategorySerializer(ModelSerializer):
     class Meta:
         model = Category
-        fields = ('id', 'name', 'created_at')
+        fields = '__all__'

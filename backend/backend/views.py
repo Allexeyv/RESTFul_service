@@ -5,7 +5,7 @@ from backend.backend.serializers import PublicationSerializer, CategorySerialize
 
 class PublicationViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows users to be viewed or edited.
+    API endpoint that allows Publication to be viewed or edited.
     """
     queryset = Publication.objects.all().order_by('created_at')
     serializer_class = PublicationSerializer
@@ -13,7 +13,7 @@ class PublicationViewSet(viewsets.ModelViewSet):
 
 class CategoryViewSet(viewsets.ModelViewSet):
     """
-    API endpoint that allows groups to be viewed or edited.
+    API endpoint that allows Category to be viewed or edited.
     """
     queryset = Category.objects.all().order_by('created_at')
     serializer_class = CategorySerializer

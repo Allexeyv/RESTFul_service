@@ -8,6 +8,10 @@ class ApiClient():
         self.headers = {'Accept': 'application/json', 'Content-Type': 'application/json;charset=utf-8'}
         self.token = None
 
+    def check_token_exists(self):
+        if not self.token:
+            return 'log in first'
+
     def login(self, login, password):
         url = f'{self.base_url}/api-token-auth/'
         headers = self.headers
@@ -20,43 +24,43 @@ class ApiClient():
             return status_code, response
 
     def get_publications(self):
-        if self.token:
-            url = f'{self.base_url}/publication/'
-            self.headers['Authorization'] = 'token ' + self.token
-            response, status_code = request.get(url, self.headers)
-            return status_code, response
-        else:
-            return 'log in first'
+        self.check_token_exists()
+        url = f'{self.base_url}/publication/'
+        self.headers['Authorization'] = 'token ' + self.token
+        response = request.get(url, self.headers)
+        return response
 
     def get_publication(self, id):
-        if self.token:
-            url = f'{self.base_url}/publication/{id}/'
-            self.headers['Authorization'] = 'token ' + self.token
-            response, status_code = request.get(url, self.headers)
-            return status_code, response
-        else:
-            return 'log in first'
+        self.check_token_exists()
+        url = f'{self.base_url}/publication/{id}/'
+        self.headers['Authorization'] = 'token ' + self.token
+        response = request.get(url, self.headers)
+        return response
 
-    # def update_publication(self, data):
-    #     pass
-
-    # def update_category(self, data):
-    #     pass
+    def post_publication(self, data):
+        self.check_token_exists()
+        url = f'{self.base_url}/publication/'
+        self.headers['Authorization'] = 'token ' + self.token
+        response = request.post(url, self.headers, data)
+        return response
 
     def get_categories(self):
-        if self.token:
-            url = f'{self.base_url}/category/'
-            self.headers['Authorization'] = 'token ' + self.token
-            response, status_code = request.get(url, self.headers)
-            return status_code, response
-        else:
-            return 'log in first'
+        self.check_token_exists()
+        url = f'{self.base_url}/category/'
+        self.headers['Authorization'] = 'token ' + self.token
+        response = request.get(url, self.headers)
+        return response
 
     def get_category(self, id):
-        if self.token:
-            url = f'{self.base_url}/category/{id}/'
-            self.headers['Authorization'] = 'token ' + self.token
-            response, status_code = request.get(url, self.headers)
-            return status_code, response
-        else:
-            return 'log in first'
+        self.check_token_exists()
+        url = f'{self.base_url}/category/{id}/'
+        self.headers['Authorization'] = 'token ' + self.token
+        response = request.get(url, self.headers)
+        return response
+
+    def post_category(self, data):
+        self.check_token_exists()
+        url = f'{self.base_url}/category/'
+        self.headers['Authorization'] = 'token ' + self.token
+        response = request.post(url, self.headers, data)
+        return response
