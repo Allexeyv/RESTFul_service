@@ -1,6 +1,7 @@
 from backend.backend.models import Publication, Category
 from rest_framework import viewsets
 from backend.backend.serializers import PublicationSerializer, CategorySerializer
+from rest_framework.permissions import IsAuthenticated
 
 
 class PublicationViewSet(viewsets.ModelViewSet):
@@ -9,6 +10,7 @@ class PublicationViewSet(viewsets.ModelViewSet):
     """
     queryset = Publication.objects.all().order_by('created_at')
     serializer_class = PublicationSerializer
+    permission_classes = (IsAuthenticated,)
 
 
 class CategoryViewSet(viewsets.ModelViewSet):
@@ -17,3 +19,4 @@ class CategoryViewSet(viewsets.ModelViewSet):
     """
     queryset = Category.objects.all().order_by('created_at')
     serializer_class = CategorySerializer
+    permission_classes = (IsAuthenticated,)
