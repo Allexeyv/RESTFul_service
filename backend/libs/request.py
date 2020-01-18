@@ -9,6 +9,13 @@ def post(url, headers, body):
     return r, status_code
 
 
+def put(url, headers, body):
+    r = requests.put(url, data=json.dumps(body), headers=headers)
+    status_code = r.status_code
+    r = r.json()
+    return r, status_code
+
+
 def get(url, headers):
     r = requests.get(url, headers=headers)
     status_code = r.status_code

@@ -38,10 +38,29 @@ class ApiClient():
         return response
 
     def post_publication(self, data):
+        body = data[0]
         self.check_token_exists()
         url = f'{self.base_url}/publication/'
         self.headers['Authorization'] = 'token ' + self.token
-        response = request.post(url, self.headers, data)
+        response = request.post(url, self.headers, body)
+        return response
+
+    def update_publication(self, data):
+        self.check_token_exists()
+        body = data[0]
+        id = body['id']
+        url = f'{self.base_url}/publication/{id}/'
+        self.headers['Authorization'] = 'token ' + self.token
+        response = request.put(url, self.headers, body)
+        return response
+        
+    def update_category(self, data):
+        self.check_token_exists()
+        body = data[0]
+        id = body['id']
+        url = f'{self.base_url}/publication/{id}/'
+        self.headers['Authorization'] = 'token ' + self.token
+        response = request.put(url, self.headers, body)
         return response
 
     def get_categories(self):
@@ -60,7 +79,8 @@ class ApiClient():
 
     def post_category(self, data):
         self.check_token_exists()
+        body = data[0]
         url = f'{self.base_url}/category/'
         self.headers['Authorization'] = 'token ' + self.token
-        response = request.post(url, self.headers, data)
+        response = request.post(url, self.headers, body)
         return response
