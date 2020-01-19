@@ -46,11 +46,13 @@ python manage.py createsuperuser --username admin
 python manage.py runserver 0.0.0.0:8000
 ```
 
-### Fill the database with fake data
-``` sh
-python manage.py fill_db 10
-```
-
 ### Django admin panel data
 superuser: admin
 password for all generated users: 1111
+
+
+## How to test
+``` sh
+python manage.py fill_db 10
+python backend/tests.py
+```

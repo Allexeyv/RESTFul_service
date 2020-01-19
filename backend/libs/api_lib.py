@@ -36,7 +36,7 @@ class ApiClient():
         response = request.get(url, headers)
         return response
 
-    def post_publication(self, data):
+    def create_publication(self, data):
         body = data[0]
         url = f'{self.base_url}/publication/'
         headers = self.make_headers()
@@ -71,7 +71,7 @@ class ApiClient():
         response = request.get(url, headers)
         return response
 
-    def post_category(self, data):
+    def create_category(self, data):
         body = data[0]
         url = f'{self.base_url}/category/'
         headers = self.make_headers()
